@@ -1,4 +1,4 @@
-package com.example.json;
+package com.megogo.exercise.channel_objects.json;
 
 import com.fasterxml.jackson.annotation.*;
 
@@ -104,4 +104,16 @@ public class Datum {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public String toString() {
+        return "Datum{" +
+                "id=" + id +
+                ", externalId=" + externalId +
+                ", title='" + title + '\'' +
+                ", programs=" + programs +
+                ", pictures=" + pictures +
+                ", videoId=" + videoId +
+                ", additionalProperties=" + additionalProperties +
+                '}';
+    }
 }

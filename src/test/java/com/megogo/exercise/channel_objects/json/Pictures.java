@@ -1,4 +1,4 @@
-package com.example.json;
+package com.megogo.exercise.channel_objects.json;
 
 import com.fasterxml.jackson.annotation.*;
 
@@ -142,4 +142,19 @@ public class Pictures {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public String toString() {
+        return "Pictures{" +
+                "original='" + original + '\'' +
+                ", _105x85='" + _105x85 + '\'' +
+                ", _150x85='" + _150x85 + '\'' +
+                ", _980x560='" + _980x560 + '\'' +
+                ", _105x60='" + _105x60 + '\'' +
+                ", _125x70='" + _125x70 + '\'' +
+                ", _480x330='" + _480x330 + '\'' +
+                ", _1600x520='" + _1600x520 + '\'' +
+                ", _230x130='" + _230x130 + '\'' +
+                ", additionalProperties=" + additionalProperties +
+                '}';
+    }
 }

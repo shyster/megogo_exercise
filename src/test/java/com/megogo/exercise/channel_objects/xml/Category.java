@@ -1,14 +1,18 @@
-package com.example.xml;
+package com.megogo.exercise.channel_objects.xml;
+
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlValue;
 
 /**
  * Created by Vladislav Kulasov on 25.01.2018.
  */
-public class Genre
+public class Category
 {
     private String content;
 
     private String lang;
 
+    @XmlValue
     public String getContent ()
     {
         return content;
@@ -19,6 +23,7 @@ public class Genre
         this.content = content;
     }
 
+    @XmlAttribute(name = "lang")
     public String getLang ()
     {
         return lang;
@@ -30,8 +35,11 @@ public class Genre
     }
 
     @Override
-    public String toString()
-    {
-        return "ClassPojo [content = "+content+", lang = "+lang+"]";
+    public String toString() {
+        return "Category{" +
+                "content='" + content + '\'' +
+                ", lang='" + lang + '\'' +
+                '}';
     }
 }
+

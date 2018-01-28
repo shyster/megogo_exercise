@@ -1,4 +1,4 @@
-package com.example.json;
+package com.megogo.exercise.channel_objects.json;
 
 import com.fasterxml.jackson.annotation.*;
 
@@ -23,7 +23,7 @@ public class Category {
     @JsonProperty("title")
     private String title;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonProperty("id")
     public Integer getId() {
@@ -65,4 +65,13 @@ public class Category {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", externalId=" + externalId +
+                ", title='" + title + '\'' +
+                ", additionalProperties=" + additionalProperties +
+                '}';
+    }
 }

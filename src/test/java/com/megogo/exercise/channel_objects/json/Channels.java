@@ -1,4 +1,4 @@
-package com.example.json;
+package com.megogo.exercise.channel_objects.json;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "result",
         "data"
 })
-public class JsonContainer {
+public class Channels {
 
     @JsonProperty("result")
     private String result;
@@ -54,4 +54,12 @@ public class JsonContainer {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public String toString() {
+        return "Channels{" +
+                "result='" + result + '\'' +
+                ", data=" + data +
+                ", additionalProperties=" + additionalProperties +
+                '}';
+    }
 }

@@ -1,8 +1,7 @@
-package com.example.json;
+package com.megogo.exercise.channel_objects.json;
 
 import com.fasterxml.jackson.annotation.*;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 /**
@@ -50,7 +49,7 @@ public class Program {
     @JsonProperty("virtual_object_id")
     private String virtualObjectId;
     @JsonProperty("start")
-    private Date start;
+    private String start;
     @JsonProperty("start_timestamp")
     private Integer startTimestamp;
     @JsonProperty("end")
@@ -165,12 +164,12 @@ public class Program {
     }
 
     @JsonProperty("start")
-    public Date getStart() {
+    public String getStart() {
         return start;
     }
 
     @JsonProperty("start")
-    public void setStart(Date start) {
+    public void setStart(String start) {
         this.start = start;
     }
 
@@ -234,4 +233,26 @@ public class Program {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public String toString() {
+        return "Program{" +
+                "externalId=" + externalId +
+                ", objectId=" + objectId +
+                ", year='" + year + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", scheduleString=" + scheduleString +
+                ", genre=" + genre +
+                ", category=" + category +
+                ", pictures=" + pictures +
+                ", virtualObjectId='" + virtualObjectId + '\'' +
+                ", start='" + start + '\'' +
+                ", startTimestamp=" + startTimestamp +
+                ", end='" + end + '\'' +
+                ", endTimestamp=" + endTimestamp +
+                ", groupedPrograms=" + groupedPrograms +
+                ", scheduleType='" + scheduleType + '\'' +
+                ", additionalProperties=" + additionalProperties +
+                '}';
+    }
 }
