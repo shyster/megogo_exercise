@@ -6,31 +6,26 @@ import javax.xml.bind.annotation.XmlValue;
 /**
  * Created by Vladislav Kulasov on 25.01.2018.
  */
-public class Title
-{
+public class Title {
     private String content;
 
     private String lang;
 
     @XmlValue
-    public String getContent ()
-    {
+    public String getContent() {
         return content;
     }
 
-    public void setContent (String content)
-    {
+    public void setContent(String content) {
         this.content = content;
     }
 
     @XmlAttribute(name = "lang")
-    public String getLang ()
-    {
+    public String getLang() {
         return lang;
     }
 
-    public void setLang (String lang)
-    {
+    public void setLang(String lang) {
         this.lang = lang;
     }
 

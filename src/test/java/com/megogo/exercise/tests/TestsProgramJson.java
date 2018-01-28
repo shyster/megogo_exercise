@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
@@ -27,7 +28,7 @@ public class TestsProgramJson {
     private List<ProgramScheduler> programSchedulersJson, programSchedulersXml;
 
     @BeforeClass
-    public void getPrograms(){
+    public void getPrograms() {
         Channels channels = jsonHelper.getJsonProgram(JSON_CHANNEL_ID);
         programSchedulersJson = jsonHelper.getProgramSchedulers(channels, JSON_CHANNEL_ID);
 
@@ -36,20 +37,20 @@ public class TestsProgramJson {
     }
 
     @Test(description = "json contains in xml")
-    public void testJsonContainsInXmlPrograms(){
-        for (ProgramScheduler programScheduler : programSchedulersJson){
+    public void testJsonContainsInXmlPrograms() {
+        for (ProgramScheduler programScheduler : programSchedulersJson) {
             logger.info("Validate :" + programScheduler.toString());
             Assert.assertTrue(programSchedulersXml.contains(programScheduler), "Not found in xml " + programScheduler.toString());
         }
     }
 
     @Test(description = "compare xml and json programs")
-    public void testCompareJsonAndXmlPrograms(){
-         Assert.assertEquals(programSchedulersXml, programSchedulersJson, "json and xml are not equal");
+    public void testCompareJsonAndXmlPrograms() {
+        Assert.assertEquals(programSchedulersXml, programSchedulersJson, "json and xml are not equal");
     }
 
     @Test(description = "Validate Json Schema")
-    public void testValidateJsonSchema(){
+    public void testValidateJsonSchema() {
         given().get(jsonHelper.getUrl(JSON_CHANNEL_ID))
                 .then()
                 .assertThat()

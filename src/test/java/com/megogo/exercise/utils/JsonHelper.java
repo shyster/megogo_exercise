@@ -19,13 +19,13 @@ import static org.hamcrest.Matchers.is;
 public class JsonHelper {
     private Logger logger = Logger.getLogger(this.getClass());
 
-    public String getUrl(int channelId){
+    public String getUrl(int channelId) {
         String url = String.format(JSON_URL_TEMPLATE, channelId);
         logger.info(url);
         return url;
     }
 
-    public Channels getJsonProgram(int channelId){
+    public Channels getJsonProgram(int channelId) {
         return given()
                 .get(getUrl(channelId))
                 .then()
@@ -45,12 +45,12 @@ public class JsonHelper {
                 .collect(Collectors.toList())
                 .get(0).getPrograms()
                 .forEach(program -> {
-            programSchedulersJson.add(new ProgramScheduler(
-                    program.getTitle(),
-                    new Date((long) program.getStartTimestamp() * 1000),
-                    new Date((long) program.getEndTimestamp() * 1000)
-            ));
-        });
+                    programSchedulersJson.add(new ProgramScheduler(
+                            program.getTitle(),
+                            new Date((long) program.getStartTimestamp() * 1000),
+                            new Date((long) program.getEndTimestamp() * 1000)
+                    ));
+                });
 
         logger.info("Got json programs " + programSchedulersJson.size());
         return programSchedulersJson;

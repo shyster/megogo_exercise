@@ -6,8 +6,7 @@ import javax.xml.bind.annotation.XmlElement;
 /**
  * Created by Vladislav Kulasov on 25.01.2018.
  */
-public class Programme
-{
+public class Programme {
     private Long id;
 
     private Desc desc;
@@ -36,128 +35,106 @@ public class Programme
     private String kinopoiskId;
     private String parental;
 
-    @XmlElement(name="id")
-    public Long getId ()
-    {
+    @XmlElement(name = "id")
+    public Long getId() {
         return id;
     }
 
-    public void setId (Long id)
-    {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    @XmlElement(name="desc")
-    public Desc getDesc ()
-    {
+    @XmlElement(name = "desc")
+    public Desc getDesc() {
         return desc;
     }
 
-    public void setDesc (Desc desc)
-    {
+    public void setDesc(Desc desc) {
         this.desc = desc;
     }
 
-    @XmlElement(name="genre")
-    public Genre getGenre ()
-    {
+    @XmlElement(name = "genre")
+    public Genre getGenre() {
         return genre;
     }
 
-    public void setGenre (Genre genre)
-    {
+    public void setGenre(Genre genre) {
         this.genre = genre;
     }
 
     @XmlAttribute(name = "stop")
-    public String getStop ()
-    {
+    public String getStop() {
         return stop;
     }
 
-    public void setStop (String stop)
-    {
+    public void setStop(String stop) {
         this.stop = stop;
     }
 
-    @XmlElement(name="title")
-    public Title getTitle ()
-    {
+    @XmlElement(name = "title")
+    public Title getTitle() {
         return title;
     }
 
-    public void setTitle (Title title)
-    {
+    public void setTitle(Title title) {
         this.title = title;
     }
 
-    @XmlElement(name="category")
-    public Category getCategory ()
-    {
+    @XmlElement(name = "category")
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory (Category category)
-    {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
     @XmlAttribute(name = "start")
-    public String getStart ()
-    {
+    public String getStart() {
         return start;
     }
 
-    public void setStart (String start)
-    {
+    public void setStart(String start) {
         this.start = start;
     }
 
     @XmlAttribute(name = "category_id")
-    public String getCategoryId()
-    {
+    public String getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(String categoryId)
-    {
+    public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
     }
 
-    @XmlElement(name="date")
-    public String getDate ()
-    {
+    @XmlElement(name = "date")
+    public String getDate() {
         return date;
     }
 
-    public void setDate (String date)
-    {
+    public void setDate(String date) {
         this.date = date;
     }
 
     @XmlAttribute(name = "channel")
-    public String getChannel ()
-    {
+    public String getChannel() {
         return channel;
     }
 
-    public void setChannel (String channel)
-    {
+    public void setChannel(String channel) {
         this.channel = channel;
     }
 
     @XmlAttribute(name = "genre_id")
-    public Integer getGenreId()
-    {
+    public Integer getGenreId() {
         return genreId;
     }
 
-    public void setGenreId(Integer genreId)
-    {
+    public void setGenreId(Integer genreId) {
         this.genreId = genreId;
     }
 
-    @XmlElement(name="episode-num")
+    @XmlElement(name = "episode-num")
     public String getEpisodeNum() {
         return episodeNum;
     }
@@ -166,7 +143,7 @@ public class Programme
         this.episodeNum = episodeNum;
     }
 
-    @XmlElement(name="production_year")
+    @XmlElement(name = "production_year")
     public String getProductionYear() {
         return productionYear;
     }
@@ -175,7 +152,7 @@ public class Programme
         this.productionYear = productionYear;
     }
 
-    @XmlElement(name="megogo_id")
+    @XmlElement(name = "megogo_id")
     public String getMegogoId() {
         return megogoId;
     }
@@ -184,7 +161,7 @@ public class Programme
         this.megogoId = megogoId;
     }
 
-    @XmlElement(name="kinopoisk_id")
+    @XmlElement(name = "kinopoisk_id")
     public String getKinopoiskId() {
         return kinopoiskId;
     }
@@ -193,7 +170,7 @@ public class Programme
         this.kinopoiskId = kinopoiskId;
     }
 
-    @XmlElement(name="parental")
+    @XmlElement(name = "parental")
     public String getParental() {
         return parental;
     }
