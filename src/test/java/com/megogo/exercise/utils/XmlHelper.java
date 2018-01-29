@@ -38,7 +38,7 @@ public class XmlHelper {
                 .getObject("tv", Tv.class);
     }
 
-    public List<ProgramScheduler> getProgramSchedulers(Tv tv) {
+    public List<ProgramScheduler> getProgramScheduler(Tv tv) {
         List<ProgramScheduler> programSchedullersXml = new ArrayList<>();
         tv.getProgramme().forEach(programme -> {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern(XML_DATE_FORMAT);

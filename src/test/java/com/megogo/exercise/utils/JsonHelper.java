@@ -36,7 +36,7 @@ public class JsonHelper {
                 .getObject(".", Channels.class);
     }
 
-    public List<ProgramScheduler> getProgramSchedulers(Channels channels, int channelId) {
+    public List<ProgramScheduler> getProgramScheduler(Channels channels, int channelId) {
         List<ProgramScheduler> programSchedulersJson = new ArrayList<>();
 
         channels.getData()

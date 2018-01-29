@@ -25,28 +25,28 @@ public class TestsProgramJson {
     private JsonHelper jsonHelper = new JsonHelper();
     private XmlHelper xmlHelper = new XmlHelper();
 
-    private List<ProgramScheduler> programSchedulersJson, programSchedulersXml;
+    private List<ProgramScheduler> programSchedulerJson, programSchedulerXml;
 
     @BeforeClass
     public void getPrograms() {
         Channels channels = jsonHelper.getJsonProgram(JSON_CHANNEL_ID);
-        programSchedulersJson = jsonHelper.getProgramSchedulers(channels, JSON_CHANNEL_ID);
+        programSchedulerJson = jsonHelper.getProgramScheduler(channels, JSON_CHANNEL_ID);
 
         Tv tv = xmlHelper.getXmlProgram(XML_CHANNEL_ID);
-        programSchedulersXml = xmlHelper.getProgramSchedulers(tv);
+        programSchedulerXml = xmlHelper.getProgramScheduler(tv);
     }
 
     @Test(description = "json contains in xml")
     public void testJsonContainsInXmlPrograms() {
-        for (ProgramScheduler programScheduler : programSchedulersJson) {
+        for (ProgramScheduler programScheduler : programSchedulerJson) {
             logger.info("Validate :" + programScheduler.toString());
-            Assert.assertTrue(programSchedulersXml.contains(programScheduler), "Not found in xml " + programScheduler.toString());
+            Assert.assertTrue(programSchedulerXml.contains(programScheduler), "Not found in xml " + programScheduler.toString());
         }
     }
 
     @Test(description = "compare xml and json programs")
     public void testCompareJsonAndXmlPrograms() {
-        Assert.assertEquals(programSchedulersXml, programSchedulersJson, "json and xml are not equal");
+        Assert.assertEquals(programSchedulerXml, programSchedulerJson, "json and xml are not equal");
     }
 
     @Test(description = "Validate Json Schema")
