@@ -21,18 +21,18 @@ public class Programme {
 
     private String start;
 
-    private String categoryId;
+    private Long categoryId;
 
     private String date;
 
     private String channel;
 
-    private Integer genreId;
+    private Long genreId;
 
     private String episodeNum;
     private String productionYear;
-    private String megogoId;
-    private String kinopoiskId;
+    private Long megogoId;
+    private Long kinopoiskId;
     private String parental;
 
     @XmlElement(name = "id")
@@ -99,11 +99,11 @@ public class Programme {
     }
 
     @XmlAttribute(name = "category_id")
-    public String getCategoryId() {
+    public Long getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(String categoryId) {
+    public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
     }
 
@@ -126,11 +126,11 @@ public class Programme {
     }
 
     @XmlAttribute(name = "genre_id")
-    public Integer getGenreId() {
+    public Long getGenreId() {
         return genreId;
     }
 
-    public void setGenreId(Integer genreId) {
+    public void setGenreId(Long genreId) {
         this.genreId = genreId;
     }
 
@@ -153,20 +153,20 @@ public class Programme {
     }
 
     @XmlElement(name = "megogo_id")
-    public String getMegogoId() {
+    public Long getMegogoId() {
         return megogoId;
     }
 
-    public void setMegogoId(String megogoId) {
+    public void setMegogoId(Long megogoId) {
         this.megogoId = megogoId;
     }
 
     @XmlElement(name = "kinopoisk_id")
-    public String getKinopoiskId() {
+    public Long getKinopoiskId() {
         return kinopoiskId;
     }
 
-    public void setKinopoiskId(String kinopoiskId) {
+    public void setKinopoiskId(Long kinopoiskId) {
         this.kinopoiskId = kinopoiskId;
     }
 
