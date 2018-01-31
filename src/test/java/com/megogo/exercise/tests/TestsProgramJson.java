@@ -21,7 +21,7 @@ public class TestsProgramJson {
     private static final int JSON_CHANNEL_ID = 295;
     private Logger logger = Logger.getLogger(this.getClass());
 
-    private JsonRestClient jsonRestClient = new JsonRestClient();
+    private RestClient jsonRestClient = new JsonRestClient();
     private List<ProgramScheduler> programSchedulerJson, programSchedulerXml;
 
     @BeforeClass
@@ -30,7 +30,7 @@ public class TestsProgramJson {
         Channels channels = (Channels) jsonRestClient.getProgram(JSON_CHANNEL_ID);
         programSchedulerJson = jsonHelper.getProgramScheduler(channels, JSON_CHANNEL_ID);
 
-        XmlRestClient xmlRestClient = new XmlRestClient();
+        RestClient xmlRestClient = new XmlRestClient();
         XmlHelper xmlHelper = new XmlHelper();
         Tv tv = (Tv) xmlRestClient.getProgram(XML_CHANNEL_ID);
         programSchedulerXml = xmlHelper.getProgramScheduler(tv);
