@@ -1,10 +1,8 @@
 package com.megogo.exercise.tests;
 
 import com.megogo.exercise.channel_objects.json.Channels;
-import com.megogo.exercise.utils.JsonHelper;
-import com.megogo.exercise.utils.ProgramScheduler;
-import com.megogo.exercise.utils.XmlHelper;
 import com.megogo.exercise.channel_objects.xml.Tv;
+import com.megogo.exercise.utils.*;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -22,17 +20,19 @@ public class TestsProgramJson {
     private static final int XML_CHANNEL_ID = 3;
     private static final int JSON_CHANNEL_ID = 295;
     private Logger logger = Logger.getLogger(this.getClass());
-    private JsonHelper jsonHelper = new JsonHelper();
-    private XmlHelper xmlHelper = new XmlHelper();
 
+    private JsonRestClient jsonRestClient = new JsonRestClient();
     private List<ProgramScheduler> programSchedulerJson, programSchedulerXml;
 
     @BeforeClass
     public void getPrograms() {
-        Channels channels = jsonHelper.getJsonProgram(JSON_CHANNEL_ID);
+        JsonHelper jsonHelper = new JsonHelper();
+        Channels channels = (Channels) jsonRestClient.getProgram(JSON_CHANNEL_ID);
         programSchedulerJson = jsonHelper.getProgramScheduler(channels, JSON_CHANNEL_ID);
 
-        Tv tv = xmlHelper.getXmlProgram(XML_CHANNEL_ID);
+        XmlRestClient xmlRestClient = new XmlRestClient();
+        XmlHelper xmlHelper = new XmlHelper();
+        Tv tv = (Tv) xmlRestClient.getProgram(XML_CHANNEL_ID);
         programSchedulerXml = xmlHelper.getProgramScheduler(tv);
     }
 
@@ -51,7 +51,7 @@ public class TestsProgramJson {
 
     @Test(description = "Validate Json Schema")
     public void testValidateJsonSchema() {
-        given().get(jsonHelper.getUrl(JSON_CHANNEL_ID))
+        given().get(jsonRestClient.getUrl(JSON_CHANNEL_ID))
                 .then()
                 .assertThat()
                 .body(matchesJsonSchemaInClasspath("program-schema.json"));

@@ -12,31 +12,12 @@ import java.util.Date;
 import java.util.List;
 
 import static com.megogo.exercise.utils.Constants.XML_DATE_FORMAT;
-import static com.megogo.exercise.utils.Constants.XML_URL_TEMPLATE;
-import static io.restassured.RestAssured.given;
-import static org.apache.http.HttpStatus.SC_OK;
 
 /**
  * Created by Vladislav Kulasov on 28.01.2018.
  */
 public class XmlHelper {
     private Logger logger = Logger.getLogger(this.getClass());
-
-    public String getUrl(int channelId) {
-        String url = String.format(XML_URL_TEMPLATE, channelId);
-        logger.info(url);
-        return url;
-    }
-
-    public Tv getXmlProgram(int channelId) {
-        return given()
-                .get(getUrl(channelId))
-                .then()
-                .statusCode(SC_OK)
-                .extract()
-                .xmlPath()
-                .getObject("tv", Tv.class);
-    }
 
     public List<ProgramScheduler> getProgramScheduler(Tv tv) {
         List<ProgramScheduler> programSchedullersXml = new ArrayList<>();

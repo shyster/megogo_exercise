@@ -8,33 +8,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.megogo.exercise.utils.Constants.JSON_URL_TEMPLATE;
-import static io.restassured.RestAssured.given;
-import static org.apache.http.HttpStatus.SC_OK;
-import static org.hamcrest.Matchers.is;
-
 /**
  * Created by Vladislav Kulasov on 28.01.2018.
  */
 public class JsonHelper {
     private Logger logger = Logger.getLogger(this.getClass());
-
-    public String getUrl(int channelId) {
-        String url = String.format(JSON_URL_TEMPLATE, channelId);
-        logger.info(url);
-        return url;
-    }
-
-    public Channels getJsonProgram(int channelId) {
-        return given()
-                .get(getUrl(channelId))
-                .then()
-                .statusCode(SC_OK)
-                .body("result", is("ok"))
-                .extract()
-                .jsonPath()
-                .getObject(".", Channels.class);
-    }
 
     public List<ProgramScheduler> getProgramScheduler(Channels channels, int channelId) {
         List<ProgramScheduler> programSchedulersJson = new ArrayList<>();
