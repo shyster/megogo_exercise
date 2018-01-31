@@ -40,8 +40,9 @@ public class TestsProgramJson {
     public void testJsonContainsInXmlPrograms() {
         for (ProgramScheduler programScheduler : programSchedulerJson) {
             logger.info("Validate :" + programScheduler.toString());
-            Assert.assertTrue(programSchedulerXml.contains(programScheduler), "Not found in xml " + programScheduler.toString());
+            Assert.assertTrue(programSchedulerXml.containsAll(programSchedulerJson), "Not found in xml " + programScheduler.toString());
         }
+        // Assert.assertTrue(programSchedulerXml.containsAll(programSchedulerJson), "Not found in xml ");
     }
 
     @Test(description = "compare xml and json programs")
