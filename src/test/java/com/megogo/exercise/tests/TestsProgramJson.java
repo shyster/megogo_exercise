@@ -6,6 +6,8 @@ import com.megogo.exercise.utils.*;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -17,22 +19,24 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
  * Created by Vladislav Kulasov on 25.01.2018.
  */
 public class TestsProgramJson {
-    private static final int XML_CHANNEL_ID = 3;
-    private static final int JSON_CHANNEL_ID = 295;
+    private int jsonChannelId;
     private Logger logger = Logger.getLogger(this.getClass());
 
     private RestClient jsonRestClient = new JsonRestClient();
     private List<ProgramScheduler> programSchedulerJson, programSchedulerXml;
 
+    @Parameters({"3", "295"})
     @BeforeClass
-    public void getPrograms() {
+    public void getPrograms(@Optional("3") int xmlChannelId, @Optional("295") int jsonChannelId) {
+        this.jsonChannelId = jsonChannelId;
+
         JsonHelper jsonHelper = new JsonHelper();
-        Channels channels = (Channels) jsonRestClient.getProgram(JSON_CHANNEL_ID);
-        programSchedulerJson = jsonHelper.getProgramScheduler(channels, JSON_CHANNEL_ID);
+        Channels channels = (Channels) jsonRestClient.getProgram(jsonChannelId);
+        programSchedulerJson = jsonHelper.getProgramScheduler(channels, jsonChannelId);
 
         RestClient xmlRestClient = new XmlRestClient();
         XmlHelper xmlHelper = new XmlHelper();
-        Tv tv = (Tv) xmlRestClient.getProgram(XML_CHANNEL_ID);
+        Tv tv = (Tv) xmlRestClient.getProgram(xmlChannelId);
         programSchedulerXml = xmlHelper.getProgramScheduler(tv);
     }
 
@@ -52,7 +56,7 @@ public class TestsProgramJson {
 
     @Test(description = "Validate Json Schema")
     public void testValidateJsonSchema() {
-        given().get(jsonRestClient.getUrl(JSON_CHANNEL_ID))
+        given().get(jsonRestClient.getUrl(jsonChannelId))
                 .then()
                 .assertThat()
                 .body(matchesJsonSchemaInClasspath("program-schema.json"));
